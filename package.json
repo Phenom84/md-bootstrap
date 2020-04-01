@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vitalicernomschi/mdb-project.git"
+    "url": "git+https://github.com/Phenom84/md-bootstrap.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Cerneaga Denis <prolevelmd@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/vitalicernomschi/mdb-project/issues"
+    "url": "https://github.com/Phenom84/md-bootstrap/issues"
   },
-  "homepage": "https://github.com/vitalicernomschi/mdb-project#readme",
+  "homepage": "https://github.com/Phenom84/md-bootstrap#readme",
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.3",

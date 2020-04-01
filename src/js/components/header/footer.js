@@ -3,9 +3,9 @@ import footerTemplate from '../../templates/footer.hbs';
 const footerContainer = document.getElementById('footer-hbs');
 
 /* logic with nav links */
-const footerBlocks = [
+const blockOfLinks = [
   {
-    title: 'Links',
+    blockTitle: 'Links',
     links: [
       {
         url: '#!',
@@ -25,8 +25,9 @@ const footerBlocks = [
       },
     ],
   },
+
   {
-    title: 'Links',
+    blockTitle: 'Links',
     links: [
       {
         url: '#!',
@@ -46,8 +47,9 @@ const footerBlocks = [
       },
     ],
   },
+
   {
-    title: 'Links',
+    blockTitle: 'Links',
     links: [
       {
         url: '#!',
@@ -64,56 +66,35 @@ const footerBlocks = [
       {
         url: '#!',
         label: 'Link 4',
-      },
-    ],
-  },
-  {
-    title: 'Links',
-    links: [
-      {
-        url: '#!',
-        label: 'Link 1',
-      },
-      {
-        url: '#!',
-        label: 'Link 2',
-      },
-      {
-        url: '#!',
-        label: 'Link 3',
-      },
-      {
-        url: '#!',
-        label: 'Link 4',
-      },
-    ],
-  },
-  {
-    sotialLinks: [
-      {
-        buttonClass: 'btn-fb',
-        faClass: 'fa-facebook',
-      },
-      {
-        buttonClass: 'btn-tw',
-        faClass: 'fa-twitter',
-      },
-      {
-        buttonClass: 'btn-gplus',
-        faClass: 'fa-google-plus',
-      },
-      {
-        buttonClass: 'btn-li',
-        faClass: 'fa-linkedin',
-      },
-      {
-        buttonClass: 'btn-dribbble',
-        faClass: 'fa-dribbble',
       },
     ],
   },
 ];
 
+const sotialLinks = [
+  {
+    aTagClass: 'btn-fb',
+    iTagClass: 'fa-facebook',
+  },
+  {
+    aTagClass: 'btn-tw',
+    iTagClass: 'fa-twitter',
+  },
+  {
+    aTagClass: 'btn-gplus',
+    iTagClass: 'fa-google-plus',
+  },
+  {
+    aTagClass: 'btn-li',
+    iTagClass: 'fa-linkedin',
+  },
+  {
+    aTagClass: 'btn-dribbble',
+    iTagClass: 'fa-dribbble',
+  },
+];
+
+
 if (footerContainer) {
-  footerContainer.innerHTML = footerTemplate({ footerBlocks });
+  footerContainer.innerHTML = footerTemplate({ blockOfLinks, sotialLinks });
 }
