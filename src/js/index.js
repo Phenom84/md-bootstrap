@@ -14,3 +14,5 @@ import 'bootstrap';
 
 // Fontawesome 5
 import './fa';
+import './components/header/header';
+import './components/header/footer';

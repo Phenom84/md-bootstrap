@@ -1,0 +1,66 @@
+<!--Footer Links-->
+<div class="container">
+    <div class="row">
+
+        <!--First column-->
+        <div class="col-md-4">
+            <h5 class="title mb-4 mt-3 font-bold">Footer Content</h5>
+            <p>Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit
+                amet, consectetur adipisicing elit.</p>
+        </div>
+        <!--/.First column-->
+
+        <hr class="clearfix w-100 d-md-none">
+
+        <!--Block of links-->
+        {{#each footerBlocks}}
+        <div class="col-md-2 mx-auto">
+            <h5 class="title mb-4 mt-3 font-bold">{{this.title}}</h5>
+            <ul>
+                {{#each links}}
+                <li>
+                    <a href="{{url}}">{{label}}</a>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+
+        <hr class="clearfix w-100 d-md-none">
+        {{/each}}
+        <!-- END Block of links-->
+        <!--/.Footer Links-->
+
+        <hr>
+
+        <!--Call to action-->
+        <div class="call-to-action">
+            <ul>
+                <li>
+                    <h5 class="mb-1">Register for free</h5>
+                </li>
+                <li><a href="" class="btn btn-danger btn-rounded">Sign up!</a></li>
+            </ul>
+        </div>
+        <!--/.Call to action-->
+
+        <hr>
+
+        <!--Social buttons-->
+        <div class="social-section text-center">
+            <ul>
+                {{#each footerBlocks}}
+                {{#each sotialLinks}}
+                <li><a class="btn-floating btn-sm {{buttonClass}}"><i class="fa {{faClass}}"> </i></a></li>
+                {{/each}}
+                {{/each}}
+            </ul>
+        </div>
+        <!--/.Social buttons-->
+
+        <!--Copyright-->
+        <div class="footer-copyright">
+            <div class="container-fluid">
+                © 2017 Copyright: <a href="https://www.sitepoint.com"> SitePoint.com </a>
+            </div>
+        </div>
+        <!--/.Copyright-->
