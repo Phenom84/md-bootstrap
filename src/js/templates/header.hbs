@@ -1,7 +1,7 @@
-<nav class="navbar fixed-top navbar-expand-md navbar-dark stylish-color-dark scrolling-navbar">
-    <a class="navbar-brand" href="/">
-        <img class="logo" src="/src/img/logo/skillup_bg.png"/>
-    </a>
+<nav class="navbar fixed-top navbar-expand-md navbar-dark scrolling-navbar">
+    <div class="logo apear_scale">
+        <img src="/src/img/logo/{{#each navigationLinks}}{{#if this.isActive}}{{this.logo}}{{/if}}{{/each}}.png" />
+    </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -17,7 +17,7 @@
         </ul>
         <ul class="navbar-nav nav-flex-icons">
             <li class="nav-item">
-                <a class="nav-link"><i class="fa fa-facebook"></i></a>
+                <a class="nav-link waves-effect waves-light"><i class="fa fa-facebook"></i></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link"><i class="fa fa-twitter"></i></a>
@@ -26,5 +26,8 @@
                 <a class="nav-link"><i class="fa fa-instagram"></i></a>
             </li>
         </ul>
+        <a>
+            <img class="calculatorIcon {{#each navigationLinks}}{{#if this.isActive}}{{this.label}}{{/if}}{{/each}}" src="/src/img/logo/calculator_icon_transparent.png"/>
+        </a>
     </div>
 </nav>

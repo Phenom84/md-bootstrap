@@ -1,9 +1,189 @@
-// FontAwesome 4.7.x
-$fa-font-path: "~font-awesome/fonts";
-@import "~font-awesome/scss/font-awesome.scss";
+$fa-font-path: '~font-awesome/fonts';
+
+@import '~font-awesome/scss/font-awesome.scss';
 
 // Bootstrap 4
-@import "~bootstrap/scss/bootstrap";
+@import '~bootstrap/scss/bootstrap';
+@import './components/animation.scss';
+@import './components/calculator.scss';
 
-@import "./components/layout"
+$bodyBorderWidth: 2px;
+$contentBgColor: rgb(255, 255, 255);
+$headerAndFooterBgColor: rgb(60, 60, 60);
+$TextColor: rgb(0, 0, 0);
 
+:root {
+  --contentBgColor: rgb(255, 255, 255);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--contentBgColor);
+  border-color: var(--borderColor);
+  border-style: solid;
+  border-width: 0.5vw;
+  min-width: 320px;
+
+  @media screen  and (min-width: 768px) {
+    border-color: var(--borderColor);
+    border-width: $bodyBorderWidth;
+    height: 100%;
+  }
+}
+
+.blurWrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 99.5vh;
+  overflow: hidden;
+}
+
+.bottomBorder {
+  background-color: var(--borderColor);
+  height: $bodyBorderWidth;
+  position: fixed;
+  width: 100%;
+}
+
+footer {
+  background-color: $headerAndFooterBgColor;
+  box-shadow: 0 -5px 15px 0 $headerAndFooterBgColor;
+  flex: 0 0;
+}
+
+.container-fluid {
+  padding: 12vw 1vw 1vw;
+
+  @media screen and (min-width: 768px) {
+    flex: 1 0;
+    padding: 100px - $bodyBorderWidth $bodyBorderWidth $bodyBorderWidth $bodyBorderWidth;
+  }
+}
+
+.logo {
+  align-items: flex-end;
+  display: flex;
+  justify-content: flex-end;
+
+  @media screen and (min-width: 768px) {
+    font-size: 56px;
+    height: 77px;
+    margin-right: 13px;
+    width: 77px;
+  }
+
+  img {
+    height: 8.5vw;
+    width: 8.5vw;
+
+    @media screen and (min-width: 768px) {
+      height: 77px;
+      width: 77px;
+    }
+  }
+}
+
+.navbar {
+  background-color: $headerAndFooterBgColor;
+  border-top-color: var(--borderColor);
+  border-top-style: solid;
+  border-top-width: 0.5vw;
+  box-shadow: 0 5px 15px 0 $headerAndFooterBgColor;
+  color: $contentBgColor;
+  left: 0.5vw;
+  min-height: 12.5vw;
+  padding: 12px 0 12px 1.7vw;
+  right: 0.5vw;
+
+  @media screen  and (min-width: 768px) {
+    border-top-color: var(--borderColor);
+    border-top-width: $bodyBorderWidth;
+    height: 100px;
+    left: $bodyBorderWidth;
+    min-height: 100px;
+    padding: 0 13px;
+    right: $bodyBorderWidth;
+  }
+}
+
+h1 {
+  background-color: var(--borderColor);
+  color: var(--contentBgColor);
+  font-size: 22px;
+  margin: 0 -1vw;
+  padding: 0 1vw 0 6.5vw;
+
+  @media screen and (min-width: 768px) {
+    font-size: 28px;
+    margin: 0 -2px;
+  }
+}
+
+#jsVideoLinks {
+  margin: 16px;
+}
+
+.calculatorIcon {
+  background-color: var(--borderColor);
+  box-shadow: 0 0 3px 0 rgba(255, 255, 255, 1);
+  margin-left: 13px;
+  width: 48px;
+}
+
+.colorPicker {
+  bottom: 0;
+  height: 30px;
+  padding: 0;
+  position: fixed;
+  right: 0;
+  width: 70px;
+}
+
+input[type='color' i]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+#calculator {
+  button {
+    border: solid 1px var(--borderColor);
+    color: var(--borderColor);
+  }
+
+  #display {
+    border: solid 1px var(--borderColor);
+
+    .previous {
+      color: var(--borderColor);
+    }
+
+    .current {
+      color: var(--borderColor);
+    }
+  }
+}
+
+.pop_up {
+  position: absolute;
+  z-index: 1029;
+  background-color: var(--contentBgColor);
+  left: 0;
+  right: 0;
+  border-bottom-right-radius: 14px;
+  border-bottom-left-radius: 14px;
+  box-shadow: 0 5px 15px 0 $headerAndFooterBgColor;
+  margin: 0 auto;
+  padding: 1rem;
+  text-align: center;
+  width: 50%;
+  text-indent: 1em;
+
+  .left,
+  .right {
+    width: 100%;
+  }
+}
+
+.hide { display: none; }

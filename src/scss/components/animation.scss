@@ -1,0 +1,244 @@
+$delay: 0.3s;
+$nDelayBigScreen: 0.2;
+$nDelaySmallScreen: 0.1;
+$add:0;
+
+@keyframes apear_scale {
+  0% {
+    opacity: 1;
+    transform: scale(0);
+  }
+
+  30% {
+    opacity: 1;
+    transform: scale(1.4);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes apear_opacity {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes disapear_opacity {
+  0% {
+    opacity: 1;
+    margin-top: 100px;
+  }
+
+  100% {
+    opacity: 0;
+    margin-top: 100px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  @keyframes disapear_opacity {
+    0% {
+      opacity: 1;
+      margin-top: 12vw;
+    }
+
+    100% {
+      opacity: 0;
+      margin-top: 12vw;
+    }
+  }
+}
+
+@keyframes apear_top {
+  0% { top: -100px; }
+  100% { top: 0; }
+}
+
+@keyframes welcome {
+  0% {
+    margin-top: -412px;
+    opacity: 1;
+  }
+
+  100% {
+    margin-top: 100px;
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  @keyframes welcome {
+    0% {
+      margin-top: -412px;
+      opacity: 1;
+    }
+
+    100% {
+      margin-top: 12vw;
+      opacity: 1;
+    }
+  }
+}
+
+@keyframes pop_up_h2_blink {
+  0% { color: black; }
+  50% { color: red; }
+  100% { color: black; }
+}
+
+@keyframes pop_up_p_left {
+  0% {
+    margin-left: -800px;
+    opacity: 0;
+  }
+
+  100% {
+    margin-left: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes pop_up_p_right {
+  0% {
+    margin-left: 800px;
+    opacity: 0;
+  }
+
+  100% {
+    margin-right: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes blur {
+  0% { -webkit-filter: blur(0); }
+  100% { -webkit-filter: blur(6px); }
+}
+
+@keyframes unblur {
+  0% {
+    opacity: 1;
+    -webkit-filter: blur(20px);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-filter: blur(0);
+  }
+}
+
+%for_apear {
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in;
+}
+
+.apear_scale {
+  @extend %for_apear;
+
+  animation-delay: $delay/2;
+  animation-duration: 1s;
+  animation-name: apear_scale;
+  transform: scale(0);
+}
+
+// .navbar {
+//   animation-name: apear_top;
+
+//   @extend %for_apear;
+
+//   animation-timing-function: cubic-bezier(0, 0, 0, 1);
+//   animation-duration: $delay;
+// }
+
+.nav-item {
+  @extend %for_apear;
+
+  animation-duration: 1s;
+  animation-name: apear_opacity;
+  opacity: 0;
+}
+
+.n1 { animation-delay: $delay + $nDelayBigScreen; }
+.n2 { animation-delay: $delay + $nDelayBigScreen * 2; }
+.n3 { animation-delay: $delay + $nDelayBigScreen * 3; }
+.n4 { animation-delay: $delay + $nDelayBigScreen * 4; }
+.n5 { animation-delay: $delay + $nDelayBigScreen * 5; }
+.n6 { animation-delay: $delay + $nDelayBigScreen * 6; } //1.5
+
+@media (max-width: 767px) {
+  .n1 { animation-delay: $delay - $nDelaySmallScreen * 6; }
+  .n2 { animation-delay: $delay - $nDelaySmallScreen * 5; }
+  .n3 { animation-delay: $delay - $nDelaySmallScreen * 4; }
+  .n4 { animation-delay: $delay - $nDelaySmallScreen * 3; }
+  .n5 { animation-delay: $delay - $nDelaySmallScreen * 2; }
+  .n6 { animation-delay: $delay - $nDelaySmallScreen; }
+}
+//start after2.5
+.pop_up {
+  @extend %for_apear;
+
+  animation-delay: $delay * 7;
+  animation-duration: $delay * 5;
+  animation-name: welcome;
+  opacity: 0;
+
+  h2 {
+    animation-delay: $delay * 13;
+    animation-duration: $delay * 2;
+    animation-iteration-count: infinite;
+    animation-name: pop_up_h2_blink;
+  }
+
+  .left {
+    @extend %for_apear;
+
+    animation-delay: $delay * 13;
+    animation-duration: 1s;
+    animation-name: apear_scale;
+    opacity: 0;
+  }
+
+  .right {
+    @extend %for_apear;
+
+    animation-delay: 0;
+    animation-duration: 0.5s;
+    animation-name: unblur;
+    opacity: 0;
+  }
+
+  .btn {
+    @extend %for_apear;
+
+    animation-delay: $delay * 16;
+    animation-duration: 1s;
+    animation-name: apear_opacity;
+    opacity: 0;
+  }
+}
+//start after1.5
+.container-fluid {
+  @extend %for_apear;
+
+  animation-delay: $delay * 5;
+  animation-duration: 1s;
+  animation-name: apear_opacity;
+  opacity: 0;
+}
+
+.blur {
+  animation-delay: 0;
+  animation-duration: 0.4s;
+  animation-fill-mode: forwards;
+  animation-name: blur;
+}
+
+.disapear {
+  @extend %for_apear;
+
+  animation-name: disapear_opacity;
+  animation-duration: 1s;
+  animation-delay: 0s;
+}

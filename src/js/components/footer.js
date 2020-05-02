@@ -1,4 +1,4 @@
-import footerTemplate from '../../templates/footer.hbs';
+import footerTemplate from '../templates/footer.hbs';
 
 const footerContainer = document.getElementById('footer-hbs');
 
