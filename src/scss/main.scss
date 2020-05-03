@@ -103,7 +103,7 @@ footer {
     border-top-width: $bodyBorderWidth;
     height: 100px;
     left: $bodyBorderWidth;
-    min-height: 100px;
+    min-height: 60px;
     padding: 0 13px;
     right: $bodyBorderWidth;
   }
@@ -187,3 +187,18 @@ input[type='color' i]::-webkit-color-swatch-wrapper {
 }
 
 .hide { display: none; }
+
+.line {
+  display: inline-flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.btn {
+  background-color: $headerAndFooterBgColor;
+  color: white;
+
+  &:hover {
+    color: var(--borderColor);
+  }
+}

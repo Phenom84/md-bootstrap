@@ -24,44 +24,66 @@ switch (bodyId) {
     break;
 }
 
-const pageBody = document.querySelector('body');
-pageBody.style.setProperty('--borderColor', color);
-document.querySelector('input').setAttribute('value', color);
-
 function changePageDecorColor() {
   if (this.type === 'color') {
-    pageBody.style.setProperty('--borderColor', this.value);
+    document.querySelector('body').style.setProperty('--borderColor', this.value);
   }
 }
 
-const inputs = [].slice.call(document.querySelectorAll('input'));
-inputs.forEach((input) => input.addEventListener('change', changePageDecorColor));
+document.querySelector('body').style.setProperty('--borderColor', color);
+document.querySelector('.colorPicker input').setAttribute('value', color);
+document.querySelector('.colorPicker input').addEventListener('change', changePageDecorColor);
 
+function readMoreHandler(target) {
+  const button = target;
+  const parrentId = document.querySelector(`#${button.closest('.readMoreWrapper').id}`).id;
+  if (parrentId === 'n1' && sessionStorage.getItem(parrentId) === 'expanded') {
+    document.querySelector('.right').style.animationDelay = '3.7s';
+    document.querySelector('.left').style.animationDelay = '3.7s';
+  } else {
+    document.querySelector('.right').style.animationDelay = null;
+    document.querySelector('.left').style.animationDelay = null;
+  }
+  button.innerHTML = (button.innerHTML === 'Read more') ? 'Read less' : 'Read more';
+  const text = document.querySelector(`#${button.closest('.readMoreWrapper').id} .more`);
+  if (text) {
+    text.classList.toggle('hide');
+  }
+  const dots = document.querySelector(`#${button.closest('.readMoreWrapper').id} .dots`);
+  if (dots) {
+    dots.classList.toggle('hide');
+  }
+  const key = button.closest('.readMoreWrapper').id;
+  sessionStorage.setItem(key, ((button.innerHTML === 'Read more') ? 'colapsed' : 'expanded'));
+}
+
+// Построение страницы с учетом SessionStorage------------------------------------------------------
+const buttons = Array.prototype.slice.call(document.querySelectorAll('.readMore'));
+buttons.forEach((button) => {
+  const storageValueForButton = sessionStorage.getItem(button.closest('.readMoreWrapper').id);
+  if (storageValueForButton === 'expanded') {
+    readMoreHandler(button);
+  }
+});
+// Конец блока построения страницы с учетом SessionStorage------------------------------------------
+
+// Прослушка всех click на странице-----------------------------------------------------------------
 const contentWrapper = document.querySelector('.blurWrapper');
-const calculator = document.getElementById('calculator');
+
 if (contentWrapper) {
   contentWrapper.addEventListener('click', (event) => {
+    const calculator = document.getElementById('calculator');
     if ((calculator && event.target.classList.contains('calculatorIcon')) || calculator.style.opacity === '1') {
       calculator.style.opacity = (calculator.style.opacity === '1') ? 0 : 1;
       calculator.style.zIndex = (calculator.style.zIndex === '1033') ? 0 : 1033;
       contentWrapper.classList.toggle('blur');
     }
     if (event.target.classList.contains('readMore')) {
-      document.getElementById('more').classList.toggle('hide');
-      document.getElementById('dots').classList.toggle('hide');
-      const buttonText = event.target;
-      buttonText.innerHTML = (buttonText.innerHTML === 'Read more') ? 'Read less' : 'Read more';
-      sessionStorage.setItem('pop_up', ((buttonText.innerHTML === 'Read more') ? 'colapsed' : 'expanded'));
+      readMoreHandler(event.target);
     }
     if (event.target.classList.contains('_close')) {
       document.querySelector('.pop_up').classList.toggle('disapear');
     }
   });
 }
-
-if (sessionStorage.getItem('pop_up') === 'expanded') {
-  document.getElementById('more').classList.toggle('hide');
-  document.getElementById('dots').classList.toggle('hide');
-  document.querySelector('.pop_up > .readMore').innerHTML = 'Read less';
-  document.querySelector('.right').style.animationDelay = '3s';
-}
+// Конец блока прослушки click----------------------------------------------------------------------

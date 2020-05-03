@@ -1,8 +1,16 @@
-<h2>Видео уроки (Владилен Минин)</h2>
-<ul class="navbar-nav">
-    {{#each jsVideoLinks}}
-    <li>
-        <a href="{{this.url}}">{{this.label}}</a>
-    </li>
-    {{/each}}
-</ul>
+<div id="n2" class="readMoreWrapper">
+    <div class="line">
+        <h2>Видео уроки (Владилен Минин)</h2>
+        <button class="btn btn-sm readMore">Read more</button>
+    </div>
+    <span class="hide more">
+        <ul class="navbar-nav">
+            {{#each jsVideoLinks}}
+            <li>
+                <a href="{{this.url}}">{{this.label}}</a>
+            </li>
+            {{/each}}
+        </ul>
+    </span>
+</div>
+</div>
