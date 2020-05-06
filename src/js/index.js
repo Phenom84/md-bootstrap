@@ -36,32 +36,33 @@ document.querySelector('.colorPicker input').addEventListener('change', changePa
 
 function readMoreHandler(target) {
   const button = target;
-  const parrentId = document.querySelector(`#${button.closest('.readMoreWrapper').id}`).id;
+  const parrentId = button.closest('.readMoreWrapper').id;
   if (parrentId === 'n1' && sessionStorage.getItem(parrentId) === 'expanded') {
     document.querySelector('.right').style.animationDelay = '3.7s';
     document.querySelector('.left').style.animationDelay = '3.7s';
-  } else {
+  } else if (parrentId === 'n1') {
     document.querySelector('.right').style.animationDelay = null;
     document.querySelector('.left').style.animationDelay = null;
   }
   button.innerHTML = (button.innerHTML === 'Read more') ? 'Read less' : 'Read more';
-  const text = document.querySelector(`#${button.closest('.readMoreWrapper').id} .more`);
+  const text = document.querySelector(`#${parrentId} .more`);
   if (text) {
     text.classList.toggle('hide');
   }
-  const dots = document.querySelector(`#${button.closest('.readMoreWrapper').id} .dots`);
+  const dots = document.querySelector(`#${parrentId} .dots`);
   if (dots) {
     dots.classList.toggle('hide');
   }
-  const key = button.closest('.readMoreWrapper').id;
+  const key = parrentId;
   sessionStorage.setItem(key, ((button.innerHTML === 'Read more') ? 'colapsed' : 'expanded'));
 }
 
 // Построение страницы с учетом SessionStorage------------------------------------------------------
 const buttons = Array.prototype.slice.call(document.querySelectorAll('.readMore'));
 buttons.forEach((button) => {
-  const storageValueForButton = sessionStorage.getItem(button.closest('.readMoreWrapper').id);
-  if (storageValueForButton === 'expanded') {
+  const parrentId = button.closest('.readMoreWrapper').id;
+  const storageValue = sessionStorage.getItem(parrentId);
+  if (storageValue === 'expanded') {
     readMoreHandler(button);
   }
 });
